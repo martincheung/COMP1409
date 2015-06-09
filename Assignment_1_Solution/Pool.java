@@ -3,8 +3,8 @@ import java.util.*;
  * Pool.
  * A simple data class.
  * 
- * @author  COMP 1409
- * @version 1.0 May 2015
+ * @author  Martin Cheung
+ * @version 20150609
  */
 public class Pool
 {
@@ -275,6 +275,25 @@ public class Pool
     public static int getNumberCreated() {
     	return numberOfPools;
     }
+    
+    /**
+     * Adds a guppy to the pool.
+     * @param guppy a Guppy
+     */
+    public void addGuppy(Guppy guppy) {
+    	if (guppy != null) {
+    		guppyPopulation.add(guppy);
+    	}
+    }
+    
+    /**
+     * Returns the number of Guppies in the pool
+     * @return guppyPopulation a int
+     */
+    public int getPopulation() {
+    	return guppyPopulation.size();
+    }
+    
     
     /**
      * Returns a description of this Pool.
