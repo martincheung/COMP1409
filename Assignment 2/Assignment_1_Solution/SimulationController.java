@@ -1,3 +1,24 @@
+
+/**
+ * Write a description of class SimulationController here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class SimulationController
+{
+    // instance variables - replace the example below with your own
+    private int x;
+
+    /**
+     * Constructor for objects of class SimulationController
+     */
+    public SimulationController()
+    {
+        // initialise instance variables
+        x = 0;
+    }
+
     /**
      * Formats a name and returns it with the first letter in
      * upper case and the rest in lower case (title case).
@@ -13,3 +34,4 @@
         }
         return null;
     }
+}

@@ -29,7 +29,7 @@ public class Pool
     private int identificationNumber;
     
     private ArrayList<Guppy> guppyPopulation;
-    private Random randomNumberGenerator;
+    private Random randomNumberGenerator = new Random();
 
     /**
      * Constructor for objects of class Pool initializes
@@ -255,7 +255,7 @@ public class Pool
      * @return guppyPopulation a ArrayList
      */
     public ArrayList<Guppy> getGuppies() {
-    	return guppyPopulation;
+        return guppyPopulation;
     }
     
     /**
@@ -263,9 +263,9 @@ public class Pool
      * @param guppyPopulation a ArrayList<Guppy>
      */
     public void setGuppies(ArrayList<Guppy> guppyPopulation) {
-    	if (guppyPopulation != null) {
-    		this.guppyPopulation = guppyPopulation;
-    	}
+        if (guppyPopulation != null) {
+            this.guppyPopulation = guppyPopulation;
+        }
     }
     
     /**
@@ -273,7 +273,7 @@ public class Pool
      * @return numberOfPools a int
      */
     public static int getNumberCreated() {
-    	return numberOfPools;
+        return numberOfPools;
     }
     
     /**
@@ -281,9 +281,9 @@ public class Pool
      * @param guppy a Guppy
      */
     public void addGuppy(Guppy guppy) {
-    	if (guppy != null) {
-    		guppyPopulation.add(guppy);
-    	}
+        if (guppy != null) {
+            guppyPopulation.add(guppy);
+        }
     }
     
     /**
@@ -291,9 +291,44 @@ public class Pool
      * @return guppyPopulation a int
      */
     public int getPopulation() {
-    	return guppyPopulation.size();
+        return guppyPopulation.size();
     }
     
+    /**
+     * Calculates which Guppies have died of malnutrition and returns the number of deaths.
+     * @return deathCount as int
+     */
+    public int applyNutrientCoefficient()
+    {
+        int deathCount = 0;
+        Iterator<Guppy> it = guppyPopulation.iterator();
+        while (it.hasNext()) {
+            Guppy tempGuppy = it.next();
+            if (randomNumberGenerator.nextDouble() > nutrientCoefficient) {
+                tempGuppy.setAlive(false);
+                deathCount++;
+            }
+        }
+        return deathCount;
+    }
+    
+    /**
+     * Remove Guppies that are not alive from the Pool.
+     * @return removedCount as int
+     */
+    public int removeDeadGuppies()
+    {
+        Iterator<Guppy> it = guppyPopulation.iterator();
+        int removedCount = 0;
+        while (it.hasNext()) {
+            Guppy tempGuppy = it.next();
+            if (tempGuppy.isAlive() == false) {
+                it.remove();
+                removedCount++;
+            }
+        }
+        return removedCount;
+    }
     
     /**
      * Returns a description of this Pool.
@@ -307,7 +342,8 @@ public class Pool
         thisPool += "Volume (Litres): " + getVolume() + "\n";
         thisPool += "Temperature (Celsius):" + getTemperature() + "\n";
         thisPool += "pH: " + getPH() + "\n";
-        thisPool += "Nutrient Coefficient: " + getNutrientCoefficient();
+        thisPool += "Nutrient Coefficient: " + getNutrientCoefficient() + "\n";
+        thisPool += "Guppy Population: " + guppyPopulation.size();
         return thisPool;
     }
 
