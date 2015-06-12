@@ -44,7 +44,6 @@ public class Guppy
         setAlive(true);
         setHealthCoefficient(DEFAULT_HEALTH_COEFFICIENT);
         identificationNumber = ++populationSize;
-        populationSize++;
     }
     
     /**
@@ -80,7 +79,7 @@ public class Guppy
             setHealthCoefficient(healthCoefficient);
         }
         
-        populationSize++;
+        identificationNumber = ++populationSize;
     }
     
     /**
@@ -241,11 +240,14 @@ public class Guppy
     }
     
     /**
-     * Increments the age by one week.
+     * Increments the age by one week. Guppy is not alive after MAX_AGE_WEEKS.
      */
     public void incrementAge()
     {
         this.ageWeeks += 1;
+        if (ageWeeks >= MAX_AGE_WEEKS) {
+            alive = false;
+        }
     }
     
     /**
@@ -315,9 +317,7 @@ public class Guppy
     
     /**
      * Formats a name and returns it with the first letter in
-     * upper case 	public static int getNumberCreated() {
-		return populationSize;
-	}and the rest in lower case (title case).
+     * upper case and the rest in lower case (title case).
      * @param name the name to format
      * @return the correctly formatted name, as a String
      */
@@ -329,5 +329,14 @@ public class Guppy
             return firstLetter + theRest;
         }
         return null;
+    }
+    
+    /**
+     * Returns the total number of Guppies created.
+     * @return
+     */
+    public static int getNumberCreated()
+    {
+        return populationSize;        
     }
 }
