@@ -98,4 +98,30 @@ public class Stream
     public int getID() {
         return idNumber;
     }
+    
+    /**
+     * Returns total number of Streams created.
+     * @return numberStreams as int
+     */
+    public static int getNumberCreated() {
+        return numberStreams;
+    }
+    
+    /**
+     * Returns String description of Stream.
+     */
+    public String toString() {
+        return "Name: " + name + 
+                " ID: " + idNumber +
+                " Source pool: " + sourcePool.getIdentificationNumber() +
+                " Destination pool: " + destinationPool.getIdentificationNumber();
+                
+    }
+    
+    /**
+     * Prints Stream's details
+     */
+    public void printDetails() {
+        System.out.println(toString());
+    }
 }

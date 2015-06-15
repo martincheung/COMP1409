@@ -43,8 +43,8 @@ public class Pool
         setTemperature(DEFAULT_TEMPERATURE);
         setPH(DEFAULT_PH);
         setNutrientCoefficient(DEFAULT_NUTRIENT_COEFFICIENT);
-        identificationNumber = ++numberOfPools;
         numberOfPools++;
+        identificationNumber = numberOfPools;
         
         guppyPopulation = new ArrayList<Guppy>();
     }
@@ -91,8 +91,8 @@ public class Pool
             setNutrientCoefficient(nutrientCoefficient);
         }
         
-        identificationNumber = ++numberOfPools;
         numberOfPools++;
+        identificationNumber = numberOfPools;
         
         guppyPopulation = new ArrayList<Guppy>();
     }
