@@ -148,6 +148,7 @@ public class Guppy
     {
         if (ageWeeks >= 0 && ageWeeks <= MAX_AGE_WEEKS) {
             this.ageWeeks = ageWeeks;
+            if (ageWeeks == MAX_AGE_WEEKS) alive = false;
         }
     }
     
@@ -333,7 +334,7 @@ public class Guppy
     
     /**
      * Returns the total number of Guppies created.
-     * @return
+     * @return populationSize as int
      */
     public static int getNumberCreated()
     {

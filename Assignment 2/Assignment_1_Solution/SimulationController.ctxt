@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=
+comment0.target=SimulationController()
+comment0.text=\n\ Constructor\ for\ objects\ of\ class\ SimulationController\n
+comment1.params=name
+comment1.target=java.lang.String\ formatName(java.lang.String)
+comment1.text=\n\ Formats\ a\ name\ and\ returns\ it\ with\ the\ first\ letter\ in\n\ upper\ case\ and\ the\ rest\ in\ lower\ case\ (title\ case).\n\ @param\ name\ the\ name\ to\ format\n\ @return\ the\ correctly\ formatted\ name,\ as\ a\ String\n
+numComments=2
