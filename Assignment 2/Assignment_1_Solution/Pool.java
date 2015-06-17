@@ -287,7 +287,7 @@ public class Pool
     }
     
     /**
-     * Returns the number of Guppies in the pool
+     * Returns the number of Guppies in the pool, dead or alive.
      * @return guppyPopulation a int
      */
     public int getPopulation() {
