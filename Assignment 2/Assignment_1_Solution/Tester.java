@@ -14,7 +14,7 @@ public class Tester
     public static final int POOLS = 3;
     public static final int GUPPIES = 2000;
     public static final int MAXIUMUM_AGE = 50;
-    public static final int WEEKS = 10; // <-- Change this to see what happens
+    public static final int WEEKS = 50; // <-- Change this to see what happens
     
     /**
      * Constructor for objects of class Tester

@@ -99,7 +99,7 @@ public class Guppy
     public final void setGenus(String genus)
     {
         if (genus != null && genus.trim().length() > 0) {
-            this.genus = formatName( genus.trim() );
+            this.genus = SimulationController.formatName( genus.trim() );
         }
         if (this.genus == null) { // Used by the non-default constructor
             this.genus = DEFAULT_GENUS;
@@ -316,21 +316,7 @@ public class Guppy
         System.out.println(this.toString());
     }
     
-    /**
-     * Formats a name and returns it with the first letter in
-     * upper case and the rest in lower case (title case).
-     * @param name the name to format
-     * @return the correctly formatted name, as a String
-     */
-    public static final String formatName(String name)
-    {
-        if (name != null && name.trim().length() > 0) {
-            String firstLetter = name.trim().toUpperCase().substring(0, 1);
-            String theRest = name.trim().toLowerCase().substring(1);
-            return firstLetter + theRest;
-        }
-        return null;
-    }
+    
     
     /**
      * Returns the total number of Guppies created.

@@ -87,7 +87,7 @@ public class Stream
      * Gets destination pool.
      * @return destinationPool as Pool
      */
-    public Pool destinationPool() {
+    public Pool getDestinationPool() {
         return destinationPool;
     }
     
@@ -111,7 +111,7 @@ public class Stream
      * Returns String description of Stream.
      */
     public String toString() {
-        return "Name: " + name + 
+        return "\nStream Name: " + name + 
                 " ID: " + idNumber +
                 " Source pool: " + sourcePool.getIdentificationNumber() +
                 " Destination pool: " + destinationPool.getIdentificationNumber();

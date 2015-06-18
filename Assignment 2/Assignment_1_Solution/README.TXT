@@ -6,7 +6,7 @@ all he/she needs to know. The comments should usually include at least:
 
 PROJECT TITLE: Assignment 2
 PURPOSE OF PROJECT: COMP 1409 Assignment 2
-VERSION or DATE: 20150609
+VERSION or DATE: 20150617
 AUTHORS: Martin Cheung
 
 

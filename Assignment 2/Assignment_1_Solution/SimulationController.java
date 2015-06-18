@@ -16,7 +16,7 @@ public class SimulationController
     public SimulationController()
     {
         simulation = new Ecosystem();
-        week = 1;
+        week = 0;
     }
     
     /**
@@ -47,7 +47,7 @@ public class SimulationController
         for (Pool pool : simulation.getPools()) {
             for (Guppy guppy : pool.getGuppies()) {
                 guppy.incrementAge();
-                if (!guppy.isAlive()) numberOfDeathsFromOldAge++;
+                if (guppy.getAge() >= 50) numberOfDeathsFromOldAge++;
             }
         }
         return numberOfDeathsFromOldAge;
@@ -83,7 +83,7 @@ public class SimulationController
      * @param numberOfWeeks as int
      */
     public void simulate(int numberOfWeeks) {
-        if (numberOfWeeks <= 0) {
+        if (numberOfWeeks >= 0) {
             int i = 1;
             while (i <= numberOfWeeks) {
                 simulateOneWeek();
@@ -100,19 +100,35 @@ public class SimulationController
         int numberOfDeathsFromOldAge = incrementAges();
         int numberOfDeathsFromMalnutrition = applyNutrientCoefficients();
         int numberRemoved = removeDeadGuppies();
-        int totalDiedThisWeek = numberOfDeathsFromOldAge + numberOfDeathsFromMalnutrition
-                                + numberRemoved;
+        int totalDiedThisWeek = numberOfDeathsFromOldAge + numberOfDeathsFromMalnutrition;
         displayReport(totalDiedThisWeek);
     }
     
     /**
      * Prints the week number, the number of Guppies that have died this week, and
      * then invokes the toString() method on the Ecosystem.
+     * @param numberRemoved as int
      */
     public void displayReport(int numberRemoved) {
         System.out.println("Week number " + week +
                             "\n Number of guppies died this week: " + numberRemoved +
                             "\n" + simulation.toString());        
+    }
+    
+    /**
+     * Formats a name and returns it with the first letter in
+     * upper case and the rest in lower case (title case).
+     * @param name the name to format
+     * @return the correctly formatted name, as a String
+     */
+    public static final String formatName(String name)
+    {
+        if (name != null && name.trim().length() > 0) {
+            String firstLetter = name.trim().toUpperCase().substring(0, 1);
+            String theRest = name.trim().toLowerCase().substring(1);
+            return firstLetter + theRest;
+        }
+        return null;
     }
 }
 

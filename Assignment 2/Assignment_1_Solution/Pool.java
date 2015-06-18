@@ -1,7 +1,6 @@
 import java.util.*;
 /**
  * Pool.
- * A simple data class.
  * 
  * @author  Martin Cheung
  * @version 20150609
@@ -114,7 +113,7 @@ public class Pool
     public final void setName(String name)
     {
         if (name != null && name.trim().length() > 0) {
-            this.name = Guppy.formatName( name.trim() ); // This is how we call the static method in Guppy
+            this.name = SimulationController.formatName( name.trim() ); // This is how we call the static method in Guppy
         }                                                // from a client class or object (in this case a Pool).
         if (this.name == null) { // Used by the non-default constructor
             this.name = DEFAULT_NAME;
@@ -305,8 +304,10 @@ public class Pool
         while (it.hasNext()) {
             Guppy tempGuppy = it.next();
             if (randomNumberGenerator.nextDouble() > nutrientCoefficient) {
-                tempGuppy.setAlive(false);
-                deathCount++;
+                if (tempGuppy.isAlive()) {
+                    tempGuppy.setAlive(false);
+                    deathCount++;
+                }
             }
         }
         return deathCount;
@@ -322,9 +323,9 @@ public class Pool
         int removedCount = 0;
         while (it.hasNext()) {
             Guppy tempGuppy = it.next();
-            if (tempGuppy.isAlive() == false) {
-                it.remove();
+            if (!tempGuppy.isAlive()) {
                 removedCount++;
+                it.remove();
             }
         }
         return removedCount;
@@ -336,9 +337,9 @@ public class Pool
      */
     public String toString()
     {
-        String thisPool = "";
+        String thisPool = "\n";
         thisPool += "Identification Number: " + getIdentificationNumber() + "\n";
-        thisPool += "Name: " + getName() + "\n";
+        thisPool += "Pool Name: " + getName() + "\n";
         thisPool += "Volume (Litres): " + getVolume() + "\n";
         thisPool += "Temperature (Celsius):" + getTemperature() + "\n";
         thisPool += "pH: " + getPH() + "\n";
